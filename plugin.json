@@ -2,6 +2,7 @@
   "name": "buoy",
   "displayName": "Buoy",
   "description": "Keeps your coding agent on your design system: looks up your tokens before writing styles and flags hardcoded values after every edit.",
+  "version": "1.0.0",
   "author": {
     "name": "Buoy",
     "email": "dylan@buoy.design",
