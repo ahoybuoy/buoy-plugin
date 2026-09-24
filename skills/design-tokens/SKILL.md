@@ -19,4 +19,7 @@ Hardcoded colours, spacing, radii and font sizes are the most common way generat
 **How to reference a token**
 - CSS custom property: `var(--name)` in CSS and style objects, `bg-[var(--name)]` in Tailwind arbitrary values.
 - Sass variable: `$name`, only in `.scss`/`.sass` files.
+- Tailwind theme token: the theme key as a class (`bg-brand-500`).
 - Never wrap a dotted token path (`color.white`) in `var()`; it is not valid CSS. If the repo only has JSON token paths, check `.buoy.yaml` for a `css_variables` prefix.
+
+Leave values that are not design decisions alone: `0`, `100%`, `1px` hairlines, `auto` and `inherit` are fine as literals.

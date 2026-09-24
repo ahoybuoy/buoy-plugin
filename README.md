@@ -13,14 +13,20 @@ Works with CSS custom properties, Tailwind themes, tokens.json (Style Dictionary
 DESIGN.md. No account, no config; everything runs locally through [`@buoy-design/cli`](https://www.npmjs.com/package/@buoy-design/cli)
 (MIT).
 
+## Get it on every pull request too
+
+The plugin catches drift while the agent writes. The free [Buoy GitHub App](https://github.com/marketplace/buoy-design) reviews every pull request, from agents and people alike, and suggests the token as a one-click fix. Installing it is enough; no Buoy account needed.
+
 ## Install
 
 **Claude Code**
 
 ```
-/plugin marketplace add anthropics/claude-plugins-community
-/plugin install buoy@claude-community
+/plugin marketplace add ahoybuoy/buoy
+/plugin install buoy@buoy
 ```
+
+Once it is approved in Anthropic's community marketplace, `/plugin install buoy@claude-community` works too; both install this repository.
 
 **Cursor**: install from [cursor.directory](https://cursor.directory), or add the MCP server by hand:
 

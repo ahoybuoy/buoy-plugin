@@ -1,11 +1,22 @@
 {
   "name": "buoy",
   "displayName": "Buoy",
-  "description": "Design tokens and drift checks for coding agents: use the token, not the hardcoded value.",
-  "version": "0.7.3",
-  "author": { "name": "Buoy", "email": "dylan@buoy.design", "url": "https://buoy.design" },
+  "description": "Keeps your coding agent on your design system: looks up your tokens before writing styles and flags hardcoded values after every edit.",
+  "author": {
+    "name": "Buoy",
+    "email": "dylan@buoy.design",
+    "url": "https://buoy.design"
+  },
   "homepage": "https://buoy.design/docs/integrations/mcp",
   "repository": "https://github.com/ahoybuoy/buoy-plugin",
   "license": "MIT",
-  "keywords": ["design-system", "design-tokens", "css", "tailwind", "react", "mcp", "lint"]
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css",
+    "tailwind",
+    "react",
+    "mcp",
+    "lint"
+  ]
 }
