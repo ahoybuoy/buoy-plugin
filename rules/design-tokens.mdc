@@ -1,0 +1,10 @@
+---
+description: Use design tokens instead of hardcoded style values
+globs: ["**/*.css", "**/*.scss", "**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte"]
+alwaysApply: false
+---
+
+When writing styles, look up the repository's design tokens with the Buoy MCP tools before using a literal value:
+`find_token_for_value` for a specific colour or size, `list_design_tokens` to browse. After editing style files,
+run `check_design_drift` on them and apply the suggested tokens. Reference tokens as `var(--name)` (or `$name` in Sass);
+never wrap a dotted JSON token path in `var()`.
