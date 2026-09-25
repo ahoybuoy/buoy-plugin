@@ -13,7 +13,7 @@ Hardcoded colours, spacing, radii and font sizes are the most common way generat
 - For a new UI task, `design_system_context` gives a one-page overview of the system.
 
 **After editing**
-- Call `check_design_drift` with the files you changed and replace each `current` value with its `suggested` token.
+- Call `check_ui_against_design_system` with the files you changed. Apply each issue's `edit` exactly (line `edit.line`, `before` → `after`); for issues without one, replace `current` with its `suggested` token.
 - An issue with no suggestion means no token has that value: use the nearest existing token from `list_design_tokens` rather than inventing a new value, or leave it and say so.
 
 **How to reference a token**
