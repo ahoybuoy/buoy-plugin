@@ -3,8 +3,9 @@
 Coding agents hardcode colours and spacing because they never read your token file. This plugin gives them your
 design system while they write:
 
-- **MCP server** (`buoy mcp serve`): `list_design_tokens`, `find_token_for_value` (`#1a73e8` → `--color-primary`),
-  `check_ui_against_design_system` (line-level, with the token and an exact line edit) and `design_system_context`.
+- **MCP server** (`buoy mcp serve`): `context_for_file` (just the tokens, scales and components the file being edited needs,
+  a few hundred tokens of context instead of the whole system), `find_token_for_value` (`#1a73e8` → `--color-primary`),
+  `check_ui_against_design_system` (line-level, with the token and an exact line edit), `list_design_tokens` and `design_system_context`.
 - **Skill** (`design-tokens`): tells the agent to look up tokens before writing styles and check drift afterwards.
 - **Claude Code hook**: after every Edit/Write of a style file, Buoy checks it and hands the fixes back to Claude.
 - **Cursor rule**: the same guidance for Cursor's agent.

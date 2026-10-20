@@ -7,14 +7,14 @@ description: Use when writing or editing UI styles (CSS, SCSS, Tailwind classes,
 
 Hardcoded colours, spacing, radii and font sizes are the most common way generated UI code drifts from a design system. The Buoy MCP server knows this repository's tokens.
 
-**Before writing styles**
-- Call `list_design_tokens` (filter by `category`, e.g. `color`, `spacing`) to see what exists.
+**Before editing a file**
+- Call `context_for_file` with the file you are about to edit (it may not exist yet). It returns only what that file needs: tokens it and its neighbours already use, the spacing, type and radius steps, components to reuse, and drift already in it. Prefer it over loading the whole system; it keeps your context small.
 - About to write a literal like `#1a73e8` or `16px`? Call `find_token_for_value` first and use the token it returns.
-- For a new UI task, `design_system_context` gives a one-page overview of the system.
+- Need more than the file's context? `list_design_tokens` with a `category` (e.g. `color`, `spacing`) returns that category in full; without arguments it returns a short summary.
 
 **After editing**
 - Call `check_ui_against_design_system` with the files you changed. Apply each issue's `edit` exactly (line `edit.line`, `before` → `after`); for issues without one, replace `current` with its `suggested` token.
-- An issue with no suggestion means no token has that value: use the nearest existing token from `list_design_tokens` rather than inventing a new value, or leave it and say so.
+- An issue with no suggestion means no token has that value: use the nearest existing token from `context_for_file` or `list_design_tokens` rather than inventing a new value, or leave it and say so.
 
 **How to reference a token**
 - CSS custom property: `var(--name)` in CSS and style objects, `bg-[var(--name)]` in Tailwind arbitrary values.

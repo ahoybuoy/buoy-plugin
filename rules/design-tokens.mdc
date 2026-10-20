@@ -4,7 +4,8 @@ globs: ["**/*.css", "**/*.scss", "**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelt
 alwaysApply: false
 ---
 
-When writing styles, look up the repository's design tokens with the Buoy MCP tools before using a literal value:
-`find_token_for_value` for a specific colour or size, `list_design_tokens` to browse. After editing style files,
+Before editing a UI file, call the Buoy MCP tool `context_for_file` with its path: it returns only the tokens, scales and
+components that file needs. Use `find_token_for_value` for a specific colour or size, and `list_design_tokens` with a category
+when you need the full list. After editing style files,
 run `check_ui_against_design_system` on them and apply each `edit` (or the suggested token). Reference tokens as `var(--name)` (or `$name` in Sass);
 never wrap a dotted JSON token path in `var()`.
