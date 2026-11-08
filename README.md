@@ -9,6 +9,11 @@ design system while they write:
 - **Skill** (`design-tokens`): tells the agent to look up tokens before writing styles and check drift afterwards.
 - **Claude Code hook**: after every Edit/Write of a style file, Buoy checks it and hands the fixes back to Claude.
 - **Cursor rule**: the same guidance for Cursor's agent.
+- **Command** (`/buoy-check` in Cursor, `/buoy:buoy-check` in Claude Code): checks the UI files you changed against the
+  design system and applies the fixes.
+
+The checks are rule-based: no model decides what counts as drift, there are no rate limits, and the same value gets flagged
+the same way every time.
 
 Works with CSS custom properties, Tailwind themes, tokens.json (Style Dictionary / Tokens Studio), SCSS variables and
 DESIGN.md. No account, no config; everything runs locally through [`@buoy-design/cli`](https://www.npmjs.com/package/@buoy-design/cli)
@@ -29,7 +34,18 @@ The plugin catches drift while the agent writes. The free [Buoy GitHub App](http
 
 Once it is approved in Anthropic's community marketplace, `/plugin install buoy@claude-community` works too; both install this repository.
 
-**Cursor**: install from [cursor.directory](https://cursor.directory), or add the MCP server by hand:
+**Cursor**: install Buoy from the [Cursor Marketplace](https://cursor.com/marketplace) (Customize → Plugins), or from
+[cursor.directory](https://cursor.directory). The Cursor plugin ships the MCP server, the `design-tokens` skill and the
+`design-tokens` rule. The Claude Code edit hook is not wired up for Cursor yet, so for now the rule asks the agent to run
+`check_ui_against_design_system` itself after editing.
+
+To try it from a checkout before it's installed:
+
+```bash
+git clone https://github.com/ahoybuoy/buoy-plugin ~/.cursor/plugins/local/buoy
+```
+
+Then reload Cursor (Developer: Reload Window). Or add only the MCP server by hand:
 
 ```json
 { "mcpServers": { "buoy": { "command": "npx", "args": ["-y", "@buoy-design/cli@latest", "mcp", "serve"] } } }
