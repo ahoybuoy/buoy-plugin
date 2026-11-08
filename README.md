@@ -7,7 +7,8 @@ design system while they write:
   a few hundred tokens of context instead of the whole system), `find_token_for_value` (`#1a73e8` → `--color-primary`),
   `check_ui_against_design_system` (line-level, with the token and an exact line edit), `list_design_tokens` and `design_system_context`.
 - **Skill** (`design-tokens`): tells the agent to look up tokens before writing styles and check drift afterwards.
-- **Claude Code hook**: after every Edit/Write of a style file, Buoy checks it and hands the fixes back to Claude.
+- **Edit hook** (Claude Code and Cursor): after the agent edits a style file, Buoy checks the lines it changed and hands
+  any design drift back to the agent, with the token to use. In Cursor it adds context after the edit and never blocks it.
 - **Cursor rule**: the same guidance for Cursor's agent.
 - **Command** (`/buoy-check` in Cursor, `/buoy:buoy-check` in Claude Code): checks the UI files you changed against the
   design system and applies the fixes.
@@ -35,9 +36,9 @@ The plugin catches drift while the agent writes. The free [Buoy GitHub App](http
 Once it is approved in Anthropic's community marketplace, `/plugin install buoy@claude-community` works too; both install this repository.
 
 **Cursor**: install Buoy from the [Cursor Marketplace](https://cursor.com/marketplace) (Customize → Plugins), or from
-[cursor.directory](https://cursor.directory). The Cursor plugin ships the MCP server, the `design-tokens` skill and the
-`design-tokens` rule. The Claude Code edit hook is not wired up for Cursor yet, so for now the rule asks the agent to run
-`check_ui_against_design_system` itself after editing.
+[cursor.directory](https://cursor.directory). The Cursor plugin ships the MCP server, the `design-tokens` skill, the
+`design-tokens` rule and a `postToolUse` hook (`hooks/cursor-hooks.json`) that runs `buoy mcp hook --cursor` after each
+agent edit. Claude Code uses `hooks/hooks.json` instead.
 
 To try it from a checkout before it's installed:
 

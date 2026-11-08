@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "postToolUse": [
+      {
+        "command": "npx -y @buoy-design/cli@latest mcp hook --cursor",
+        "matcher": "Write",
+        "timeout": 120
+      }
+    ]
+  }
+}
