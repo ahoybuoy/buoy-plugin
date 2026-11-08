@@ -5,7 +5,7 @@
   "minClientVersions": {
     "cursor": "3.13.0"
   },
-  "description": "Keeps Cursor's agent on your design system: it looks up your tokens before writing styles and checks each edit for design drift, with the exact token to use.",
+  "description": "Keeps Cursor's agent on your design system. It looks up your tokens before writing styles and checks each edit for design drift. The checks are rule-based and run locally: no account, no rate limits, and the same value gets flagged the same way every time.",
   "author": {
     "name": "Buoy",
     "email": "dylan@buoy.design"
@@ -34,6 +34,7 @@
   ],
   "rules": "./rules/",
   "skills": "./skills/",
+  "commands": "./commands/",
   "mcpServers": "./mcp.json",
   "hooks": {
     "version": 1,

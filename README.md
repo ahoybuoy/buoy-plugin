@@ -9,6 +9,11 @@ design system while they write:
 - **Skill** (`design-tokens`): tells the agent to look up tokens before writing styles and check drift afterwards.
 - **Claude Code hook**: after every Edit/Write of a style file, Buoy checks it and hands the fixes back to Claude.
 - **Cursor rule**: the same guidance for Cursor's agent.
+- **Command** (`/buoy-check` in Cursor, `/buoy:buoy-check` in Claude Code): checks the UI files you changed against the
+  design system and applies the fixes.
+
+The checks are rule-based: no model decides what counts as drift, there are no rate limits, and the same value gets flagged
+the same way every time.
 
 Works with CSS custom properties, Tailwind themes, tokens.json (Style Dictionary / Tokens Studio), SCSS variables and
 DESIGN.md. No account, no config; everything runs locally through [`@buoy-design/cli`](https://www.npmjs.com/package/@buoy-design/cli)
