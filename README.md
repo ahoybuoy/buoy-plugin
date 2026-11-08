@@ -29,7 +29,18 @@ The plugin catches drift while the agent writes. The free [Buoy GitHub App](http
 
 Once it is approved in Anthropic's community marketplace, `/plugin install buoy@claude-community` works too; both install this repository.
 
-**Cursor**: install from [cursor.directory](https://cursor.directory), or add the MCP server by hand:
+**Cursor**: install Buoy from the [Cursor Marketplace](https://cursor.com/marketplace) (Customize → Plugins), or from
+[cursor.directory](https://cursor.directory). The Cursor plugin ships the MCP server, the `design-tokens` skill and the
+`design-tokens` rule. Cursor has no hook that can hand feedback back to the agent after an edit, so the rule asks the agent
+to run `check_ui_against_design_system` itself instead.
+
+To try it from a checkout before it's installed:
+
+```bash
+git clone https://github.com/ahoybuoy/buoy-plugin ~/.cursor/plugins/local/buoy
+```
+
+Then reload Cursor (Developer: Reload Window). Or add only the MCP server by hand:
 
 ```json
 { "mcpServers": { "buoy": { "command": "npx", "args": ["-y", "@buoy-design/cli@latest", "mcp", "serve"] } } }
