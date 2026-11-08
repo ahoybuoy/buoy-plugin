@@ -31,8 +31,8 @@ Once it is approved in Anthropic's community marketplace, `/plugin install buoy@
 
 **Cursor**: install Buoy from the [Cursor Marketplace](https://cursor.com/marketplace) (Customize → Plugins), or from
 [cursor.directory](https://cursor.directory). The Cursor plugin ships the MCP server, the `design-tokens` skill and the
-`design-tokens` rule. Cursor has no hook that can hand feedback back to the agent after an edit, so the rule asks the agent
-to run `check_ui_against_design_system` itself instead.
+`design-tokens` rule. The Claude Code edit hook is not wired up for Cursor yet, so for now the rule asks the agent to run
+`check_ui_against_design_system` itself after editing.
 
 To try it from a checkout before it's installed:
 
