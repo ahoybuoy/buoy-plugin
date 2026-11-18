@@ -13,6 +13,14 @@ design system while they write:
 - **Command** (`/buoy-check` in Cursor, `/buoy:buoy-check` in Claude Code): checks the UI files you changed against the
   design system and applies the fixes.
 
+| | Name | What it is |
+| --- | --- | --- |
+| Skill | `design-tokens` | Look up tokens before writing styles; check the edited files afterwards |
+| Command | `/buoy-check` (Cursor), `/buoy:buoy-check` (Claude Code) | Check the UI files changed on this branch and apply the fixes |
+| Hook | `hooks/hooks.json` (Claude Code), `hooks/cursor-hooks.json` (Cursor) | After each style-file edit, report any drift and the token to use |
+| Rule | `rules/design-tokens.mdc` | The same guidance for Cursor's agent |
+| MCP tools | `context_for_file`, `list_design_tokens`, `find_token_for_value`, `check_ui_against_design_system`, `design_system_context` | Token lookup and line-level drift checks the agent can call while it writes |
+
 The checks are rule-based: no model decides what counts as drift, there are no rate limits, and the same value gets flagged
 the same way every time.
 
@@ -25,6 +33,14 @@ DESIGN.md. No account, no config; everything runs locally through [`@buoy-design
 The plugin catches drift while the agent writes. The free [Buoy GitHub App](https://github.com/marketplace/buoy-design) reviews every pull request, from agents and people alike, and suggests the token as a one-click fix. Installing it is enough; no Buoy account needed.
 
 ## Install
+
+**Skill only** (Claude Code, Codex, Cursor, Windsurf, and other agents the [Skills CLI](https://github.com/vercel-labs/skills) supports):
+
+```
+npx skills add ahoybuoy/buoy-plugin
+```
+
+This installs the `design-tokens` skill. It does not register the MCP server or the edit hook; use the plugin or `mcp install` below for those.
 
 **Claude Code**
 
